@@ -1,21 +1,88 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Api View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ERSViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="apiViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="8cn-S1-TKM">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="ETf-Lf-ZGG"/>
+                                    <constraint firstAttribute="width" constant="300" id="tOJ-LC-b3e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDz-aF-dM6">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="axd-hV-tgM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Demo returning results from Umbraco API" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="GHb-ca-DB6">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="305" id="RTW-D3-KAF"/>
+                                    <constraint firstAttribute="height" constant="30" id="nPs-qJ-Uv3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="bvt-Nt-71a">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="ObB-cL-jjH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okX-sM-VKo">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="234" id="aOd-0G-hT4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="okX-sM-VKo" firstAttribute="leading" secondItem="bvt-Nt-71a" secondAttribute="leading" type="default" id="1eA-yZ-DId"/>
+                            <constraint firstItem="8cn-S1-TKM" firstAttribute="leading" secondItem="GHb-ca-DB6" secondAttribute="leading" type="default" id="1v2-Vt-Jo7"/>
+                            <constraint firstItem="okX-sM-VKo" firstAttribute="top" secondItem="bvt-Nt-71a" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="D7E-c0-1xE"/>
+                            <constraint firstItem="bvt-Nt-71a" firstAttribute="leading" secondItem="dDz-aF-dM6" secondAttribute="leading" type="default" id="Vdx-CV-que"/>
+                            <constraint firstItem="dDz-aF-dM6" firstAttribute="trailing" secondItem="8cn-S1-TKM" secondAttribute="trailing" type="default" id="WVE-h4-EBx"/>
+                            <constraint firstItem="dDz-aF-dM6" firstAttribute="top" secondItem="8cn-S1-TKM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YBS-ek-Pq3"/>
+                            <constraint firstItem="bvt-Nt-71a" firstAttribute="top" secondItem="3" secondAttribute="top" constant="189" id="azV-bh-nSO"/>
+                            <constraint firstItem="GHb-ca-DB6" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="bwx-tI-tgI"/>
+                            <constraint firstItem="dDz-aF-dM6" firstAttribute="trailing" secondItem="bvt-Nt-71a" secondAttribute="trailing" type="default" id="fHh-lE-M0j"/>
+                            <constraint firstItem="GHb-ca-DB6" firstAttribute="top" secondItem="3" secondAttribute="top" constant="10" id="g2D-W1-RCm"/>
+                            <constraint firstItem="dDz-aF-dM6" firstAttribute="leading" secondItem="8cn-S1-TKM" secondAttribute="leading" type="default" id="iu9-uL-6A8"/>
+                            <constraint firstItem="bvt-Nt-71a" firstAttribute="trailing" secondItem="okX-sM-VKo" secondAttribute="trailing" type="default" id="jp5-VC-b1V"/>
+                            <constraint firstItem="8cn-S1-TKM" firstAttribute="top" secondItem="GHb-ca-DB6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="z8B-vh-pA8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="JSONlabel" destination="8cn-S1-TKM" id="U9G-C6-qwA"/>
+                        <outlet property="chartImage" destination="okX-sM-VKo" id="fLZ-b6-hVT"/>
+                        <outlet property="contentLabel" destination="dDz-aF-dM6" id="fLV-8A-Qtw"/>
+                        <outlet property="releaseDateLabel" destination="bvt-Nt-71a" id="Pel-zX-aH3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="76" y="28"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

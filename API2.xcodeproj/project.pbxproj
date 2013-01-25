@@ -17,12 +17,14 @@
 		969AFF5316B02D04008DC681 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 969AFF5216B02D04008DC681 /* Default@2x.png */; };
 		969AFF5516B02D04008DC681 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 969AFF5416B02D04008DC681 /* Default-568h@2x.png */; };
 		969AFF5816B02D04008DC681 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969AFF5616B02D04008DC681 /* MainStoryboard.storyboard */; };
-		969AFF5B16B02D04008DC681 /* ERSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969AFF5A16B02D04008DC681 /* ERSViewController.m */; };
 		969AFF6316B02D04008DC681 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969AFF6216B02D04008DC681 /* SenTestingKit.framework */; };
 		969AFF6416B02D04008DC681 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969AFF3E16B02D04008DC681 /* UIKit.framework */; };
 		969AFF6516B02D04008DC681 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969AFF4016B02D04008DC681 /* Foundation.framework */; };
 		969AFF6D16B02D04008DC681 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 969AFF6B16B02D04008DC681 /* InfoPlist.strings */; };
 		969AFF7016B02D04008DC681 /* API2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969AFF6F16B02D04008DC681 /* API2Tests.m */; };
+		969AFF8416B02D28008DC681 /* apiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969AFF7A16B02D28008DC681 /* apiViewController.m */; };
+		969AFF8816B02D28008DC681 /* ERSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969AFF8316B02D28008DC681 /* ERSViewController.m */; };
+		969AFF8B16B07866008DC681 /* ChinaCornProduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 969AFF8A16B07866008DC681 /* ChinaCornProduction.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,14 +52,17 @@
 		969AFF5216B02D04008DC681 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		969AFF5416B02D04008DC681 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		969AFF5716B02D04008DC681 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		969AFF5916B02D04008DC681 /* ERSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ERSViewController.h; sourceTree = "<group>"; };
-		969AFF5A16B02D04008DC681 /* ERSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ERSViewController.m; sourceTree = "<group>"; };
 		969AFF6116B02D04008DC681 /* API2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = API2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		969AFF6216B02D04008DC681 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		969AFF6A16B02D04008DC681 /* API2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "API2Tests-Info.plist"; sourceTree = "<group>"; };
 		969AFF6C16B02D04008DC681 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		969AFF6E16B02D04008DC681 /* API2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API2Tests.h; sourceTree = "<group>"; };
 		969AFF6F16B02D04008DC681 /* API2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = API2Tests.m; sourceTree = "<group>"; };
+		969AFF7916B02D28008DC681 /* apiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apiViewController.h; path = ../apiViewController.h; sourceTree = "<group>"; };
+		969AFF7A16B02D28008DC681 /* apiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = apiViewController.m; path = ../apiViewController.m; sourceTree = "<group>"; };
+		969AFF8216B02D28008DC681 /* ERSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ERSViewController.h; path = ../ERSViewController.h; sourceTree = "<group>"; };
+		969AFF8316B02D28008DC681 /* ERSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ERSViewController.m; path = ../ERSViewController.m; sourceTree = "<group>"; };
+		969AFF8A16B07866008DC681 /* ChinaCornProduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChinaCornProduction.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +92,7 @@
 		969AFF2F16B02D04008DC681 = {
 			isa = PBXGroup;
 			children = (
+				969AFF8916B07848008DC681 /* Images */,
 				969AFF4416B02D04008DC681 /* API2 */,
 				969AFF6816B02D04008DC681 /* API2Tests */,
 				969AFF3D16B02D04008DC681 /* Frameworks */,
@@ -119,9 +125,11 @@
 			children = (
 				969AFF4D16B02D04008DC681 /* ERSAppDelegate.h */,
 				969AFF4E16B02D04008DC681 /* ERSAppDelegate.m */,
+				969AFF7916B02D28008DC681 /* apiViewController.h */,
+				969AFF7A16B02D28008DC681 /* apiViewController.m */,
+				969AFF8216B02D28008DC681 /* ERSViewController.h */,
+				969AFF8316B02D28008DC681 /* ERSViewController.m */,
 				969AFF5616B02D04008DC681 /* MainStoryboard.storyboard */,
-				969AFF5916B02D04008DC681 /* ERSViewController.h */,
-				969AFF5A16B02D04008DC681 /* ERSViewController.m */,
 				969AFF4516B02D04008DC681 /* Supporting Files */,
 			);
 			path = API2;
@@ -158,6 +166,14 @@
 				969AFF6B16B02D04008DC681 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		969AFF8916B07848008DC681 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				969AFF8A16B07866008DC681 /* ChinaCornProduction.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +253,7 @@
 				969AFF5316B02D04008DC681 /* Default@2x.png in Resources */,
 				969AFF5516B02D04008DC681 /* Default-568h@2x.png in Resources */,
 				969AFF5816B02D04008DC681 /* MainStoryboard.storyboard in Resources */,
+				969AFF8B16B07866008DC681 /* ChinaCornProduction.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +290,8 @@
 			files = (
 				969AFF4B16B02D04008DC681 /* main.m in Sources */,
 				969AFF4F16B02D04008DC681 /* ERSAppDelegate.m in Sources */,
-				969AFF5B16B02D04008DC681 /* ERSViewController.m in Sources */,
+				969AFF8416B02D28008DC681 /* apiViewController.m in Sources */,
+				969AFF8816B02D28008DC681 /* ERSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

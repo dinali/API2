@@ -17,7 +17,7 @@
 @synthesize JSONlabel = _JSONlabel;         // title
 @synthesize contentLabel = _contentLabel;   // description
 @synthesize releaseDateLabel = _releaseDateLabel;
-@synthesize chartImage = _chartImage;  // display the chart
+@synthesize chartImageView = _chartImageView;  // display the chart in the imageview
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,13 +26,13 @@
 }
 
 -(void)viewDidAppear{
-    self.title = @"Website API";
+    self.title = @"Retrieve Data From Website API";
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"ERS JSON Web Service";
+    self.title = @"Retrieve Data From Website API";
     
     dispatch_queue_t kBgQueue = dispatch_get_global_queue(
                                                           DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -104,98 +104,54 @@
 //                    NSLog(@"json dictionary item = %@", item);
                 }
             }
+        } // end for
     
-    /*
+       /* TODO: fix this date formatter, returns NIL -  // NSString to NSDate and return back into a string */
     
-     TODO: get the Description out of the Properties Array
-     
-    NSArray* propertiesArray = [json objectForKey:@"Properties"];
-    NSInteger index = 0;
+    ////2013-01-23T15:56:53Z
     
-    for(id element in propertiesArray) {
-        NSLog(@"element at index %u is = %@", index, element);
-        index++;
-    }
+    NSString *dateString = @"2013-01-23T15:56:53Z";
     
-    // a chart's properties are stored in the array
-    NSDictionary* chart = [propertiesArray objectAtIndex:0];
-    NSString *item = nil;  // contain the value associated with the key
-    NSInteger *g = 0;
-  //  NSDictionary *subElementDict = [[NSDictionary alloc] init];
-    NSString *file = @"file";
-    NSString *title = @"title";
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
     
-    for (item in chart)
-    {
-        value = [chart objectForKey:file];  // path to the image
-        
-        if( [value isKindOfClass:[NSString class]])
-        {
-            NSLog(@"chart value = %@", value);
-            NSLog(@"chart key = %@", item);
-            g++;
-        }
-        
-        value = [chart objectForKey:title];  // title
-        
-        if( [value isKindOfClass:[NSString class]])
-        {
-            NSLog(@"chart value = %@", value);
-            NSLog(@"chart key = %@", item);
-            g++;
-        }
-
-        
-        else {      // dictionary of more info
-            subElementDict = [loan objectForKey:@"source"];
-            NSString *leafString = [subElementDict objectForKey:@"licenseType"];
-            
-            NSLog(@"leaf value = %@", leafString );
-            NSLog(@"loan key = %@", item);
-            g++;
-        }
-         */
-    }
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [outputFormatter setTimeStyle:NSDateFormatterNoStyle];
     
-    // display leaf details on the page
-    // todo: fix this date formatter, returns NIL -  // NSString to NSDate and return back into a string
-//    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-//    
-//    [format setDateFormat:@"MMM d, yyyy"];
-//    NSDate *date = [format dateFromString:releaseDate];
-//    
-//    NSString *formattedDate_string = [format stringFromDate:date];
+    NSDate *date = [inputFormatter dateFromString:dateString];
     
-        
-   // _contentLabel.text =  formattedDate_string;
-    _contentLabel.text = releaseDate;
+    //this will set date's time components to 00:00
+    [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
+                                    startDate:&date
+                                     interval:NULL
+                                      forDate:date];
+    
+    NSString *outputDateString = [outputFormatter stringFromDate:date];
+    
+    /* TEST: display variables on UIView */
+    
+    _contentLabel.text = outputDateString;
     _JSONlabel.text = title;
     
-    // url - need the image or full URL for this to work
-    //UIImage *myImage = [[UIImage alloc] initWithContentsOfFile: url];
-    UIImage *myImage = [[UIImage alloc] initWithContentsOfFile:@"/Users/dinali/Documents/XCode Projects/API2/ChinaCornProduction.png"];
-    _chartImage.image = myImage;
-    
-    //self.photoImageView.image = [UIImage imageNamed:@"img.png"];
+    /* format URL for image, could put this in a separate function */
+    NSString *urlPath = @"http://www.ers.usda.gov";
 
+    NSMutableString *fullURL;
     
-   // jSONlabel.text = [subElementDict objectForKey:@"licenseType"];
-    /*
-    _contentLabel.numberOfLines = 8;
-    _contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize textSize = [self.contentLabel.text sizeWithFont:self.contentLabel.font
-                                         constrainedToSize:CGSizeMake(self.contentLabel.frame.size.width, MAXFLOAT)
-                                             lineBreakMode:self.contentLabel.lineBreakMode];
-    _contentLabel.frame = CGRectMake(5.0f, 5.0f, (textSize.width + 20), (textSize.height + 20));
+    if (fullURL == nil){
+        fullURL = [[NSMutableString alloc] init];
+    }
     
-    _JSONlabel.numberOfLines = 8;
-    _JSONlabel.lineBreakMode = NSLineBreakByWordWrapping;
+    [ fullURL appendString: urlPath];
+    [ fullURL appendString: url];
     
-    CGSize textSize2 = [self.contentLabel.text sizeWithFont:self.JSONlabel.font
-                                          constrainedToSize:CGSizeMake(self.contentLabel.frame.size.width, MAXFLOAT)
-                                              lineBreakMode:self.JSONlabel.lineBreakMode];
-    _contentLabel.frame = CGRectMake(0.0f, 0.0f, textSize2.width, (textSize2.height + 20));
-    */
+    NSURL *imageURL = [NSURL URLWithString:fullURL];
+    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+    UIImage * image = [UIImage imageWithData:imageData];
+    
+    _chartImageView.image = image;
+   
 
     /* EXAMPLE: return a dictionary element from a dictionary element
      contentLabel.text = [NSString stringWithFormat:@"Latest loan: %@
@@ -298,5 +254,77 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 //}
+
+#pragma mark - OLD CODE for Properties Array
+
+/*
+ 
+ TODO: get the Description out of the Properties Array
+ 
+ NSArray* propertiesArray = [json objectForKey:@"Properties"];
+ NSInteger index = 0;
+ 
+ for(id element in propertiesArray) {
+ NSLog(@"element at index %u is = %@", index, element);
+ index++;
+ }
+ 
+ // a chart's properties are stored in the array
+ NSDictionary* chart = [propertiesArray objectAtIndex:0];
+ NSString *item = nil;  // contain the value associated with the key
+ NSInteger *g = 0;
+ //  NSDictionary *subElementDict = [[NSDictionary alloc] init];
+ NSString *file = @"file";
+ NSString *title = @"title";
+ 
+ for (item in chart)
+ {
+ value = [chart objectForKey:file];  // path to the image
+ 
+ if( [value isKindOfClass:[NSString class]])
+ {
+ NSLog(@"chart value = %@", value);
+ NSLog(@"chart key = %@", item);
+ g++;
+ }
+ 
+ value = [chart objectForKey:title];  // title
+ 
+ if( [value isKindOfClass:[NSString class]])
+ {
+ NSLog(@"chart value = %@", value);
+ NSLog(@"chart key = %@", item);
+ g++;
+ }
+ 
+ 
+ else {      // dictionary of more info
+ subElementDict = [loan objectForKey:@"source"];
+ NSString *leafString = [subElementDict objectForKey:@"licenseType"];
+ 
+ NSLog(@"leaf value = %@", leafString );
+ NSLog(@"loan key = %@", item);
+ g++;
+ }
+ */
+
+#pragma mark - OLD CODE for label formatting, might not be needed in iOS6?
+// jSONlabel.text = [subElementDict objectForKey:@"licenseType"];
+/*
+ _contentLabel.numberOfLines = 8;
+ _contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+ CGSize textSize = [self.contentLabel.text sizeWithFont:self.contentLabel.font
+ constrainedToSize:CGSizeMake(self.contentLabel.frame.size.width, MAXFLOAT)
+ lineBreakMode:self.contentLabel.lineBreakMode];
+ _contentLabel.frame = CGRectMake(5.0f, 5.0f, (textSize.width + 20), (textSize.height + 20));
+ 
+ _JSONlabel.numberOfLines = 8;
+ _JSONlabel.lineBreakMode = NSLineBreakByWordWrapping;
+ 
+ CGSize textSize2 = [self.contentLabel.text sizeWithFont:self.JSONlabel.font
+ constrainedToSize:CGSizeMake(self.contentLabel.frame.size.width, MAXFLOAT)
+ lineBreakMode:self.JSONlabel.lineBreakMode];
+ _contentLabel.frame = CGRectMake(0.0f, 0.0f, textSize2.width, (textSize2.height + 20));
+ */
 
 @end

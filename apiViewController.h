@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *JSONlabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *chartImage;
+
+@property (weak, nonatomic) IBOutlet UIImageView *chartImageView;
 
 @end

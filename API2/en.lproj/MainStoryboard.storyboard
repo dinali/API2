@@ -15,10 +15,10 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="8cn-S1-TKM">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="9Y0-nT-v87"/>
-                                    <constraint firstAttribute="width" constant="305" id="N19-VM-yiF"/>
+                                    <constraint firstAttribute="width" constant="305" id="H9w-P0-ADw"/>
+                                    <constraint firstAttribute="height" constant="35" id="cSC-IM-adY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -27,17 +27,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="axd-hV-tgM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="bvt-Nt-71a">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="109" id="ObB-cL-jjH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87y-sB-YYi">
@@ -45,27 +36,37 @@
                                     <constraint firstAttribute="height" constant="336" id="rzc-QD-RUF"/>
                                 </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rb2-Fo-iub">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="meP-rd-ToI"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="87y-sB-YYi" firstAttribute="leading" secondItem="bvt-Nt-71a" secondAttribute="leading" type="default" id="2fb-1C-3pa"/>
-                            <constraint firstItem="bvt-Nt-71a" firstAttribute="trailing" secondItem="dDz-aF-dM6" secondAttribute="trailing" type="default" id="9qw-TD-U1H"/>
+                            <constraint firstItem="rb2-Fo-iub" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="0g5-vU-C86"/>
+                            <constraint firstItem="87y-sB-YYi" firstAttribute="leading" secondItem="dDz-aF-dM6" secondAttribute="leading" type="default" id="4Xd-ub-3MJ"/>
                             <constraint firstItem="87y-sB-YYi" firstAttribute="top" secondItem="3" secondAttribute="top" constant="206" id="Gs7-XU-Eoc"/>
-                            <constraint firstItem="bvt-Nt-71a" firstAttribute="trailing" secondItem="87y-sB-YYi" secondAttribute="trailing" type="default" id="Nms-Yb-fbq"/>
-                            <constraint firstItem="dDz-aF-dM6" firstAttribute="top" secondItem="8cn-S1-TKM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="PaH-9X-dP8"/>
                             <constraint firstItem="8cn-S1-TKM" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="Pz7-Ei-O5u"/>
-                            <constraint firstItem="bvt-Nt-71a" firstAttribute="leading" secondItem="dDz-aF-dM6" secondAttribute="leading" type="default" id="Vdx-CV-que"/>
+                            <constraint firstItem="rb2-Fo-iub" firstAttribute="top" secondItem="dDz-aF-dM6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aRe-bn-DwV"/>
+                            <constraint firstItem="dDz-aF-dM6" firstAttribute="top" secondItem="8cn-S1-TKM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aja-dr-MkN"/>
+                            <constraint firstItem="rb2-Fo-iub" firstAttribute="trailing" secondItem="87y-sB-YYi" secondAttribute="trailing" type="default" id="bPa-GY-aX0"/>
                             <constraint firstItem="dDz-aF-dM6" firstAttribute="leading" secondItem="8cn-S1-TKM" secondAttribute="leading" type="default" id="iu9-uL-6A8"/>
-                            <constraint firstItem="bvt-Nt-71a" firstAttribute="top" secondItem="dDz-aF-dM6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="m6G-ik-YXc"/>
                             <constraint firstItem="dDz-aF-dM6" firstAttribute="trailing" secondItem="8cn-S1-TKM" secondAttribute="trailing" type="default" id="sHb-Cx-zEB"/>
-                            <constraint firstItem="8cn-S1-TKM" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="tV5-8q-h8D"/>
+                            <constraint firstItem="dDz-aF-dM6" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="ted-JQ-eJ9"/>
+                            <constraint firstItem="rb2-Fo-iub" firstAttribute="trailing" secondItem="dDz-aF-dM6" secondAttribute="trailing" type="default" id="yso-EO-R7s"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="JSONlabel" destination="8cn-S1-TKM" id="U9G-C6-qwA"/>
                         <outlet property="chartImageView" destination="87y-sB-YYi" id="Z6g-8e-fGz"/>
                         <outlet property="contentLabel" destination="dDz-aF-dM6" id="fLV-8A-Qtw"/>
-                        <outlet property="releaseDateLabel" destination="bvt-Nt-71a" id="Pel-zX-aH3"/>
+                        <outlet property="contentTextView" destination="rb2-Fo-iub" id="Y3J-0r-6w7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -83,7 +84,7 @@
                 <relationship kind="outlet" name="JSONlabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="chartImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="contentLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="releaseDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="contentTextView" candidateClass="UITextView"/>
             </relationships>
         </class>
     </classes>

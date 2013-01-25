@@ -16,7 +16,8 @@
 
 @synthesize JSONlabel = _JSONlabel;         // title
 @synthesize contentLabel = _contentLabel;   // description
-@synthesize releaseDateLabel = _releaseDateLabel;
+@synthesize contentTextView = _contentTextView;
+//@synthesize releaseDateLabel = _releaseDateLabel;
 @synthesize chartImageView = _chartImageView;  // display the chart in the imageview
 
 - (void)didReceiveMemoryWarning
@@ -73,16 +74,20 @@
 //        j++;
 //        
 //    }
-    NSInteger j = 0;
+//    NSInteger j = 0;
     NSUInteger *i = 0;
     NSUInteger *records = [jsonArray count];
     NSString *item, *value, *title, *url, *releaseDate, *description = nil;
     
+    // TODO: change UI, this displays only the first ChartOfNote
     NSDictionary* jsonDictionary = [jsonArray objectAtIndex:0];
+    NSArray *propertiesArray;
     
 //    key = @"Title";
 //    url = @"Url";
 //    releaseDate = @"ReleaseDate";
+    
+    @try {
     
     // array of dictionaries within the big json array
         for (i = 0; i < records; i++)
@@ -96,61 +101,47 @@
                 {
                     title = [jsonDictionary objectForKey: @"Title"];
                     url = [jsonDictionary objectForKey: @"Url"];
-                    releaseDate = [jsonDictionary objectForKey: @"ReleaseDate"];
+                    releaseDate = [jsonDictionary objectForKey: @"ReleaseDate"];                    
                     
-//                    NSLog(@"json dictionary title = %@", title);
-//                    NSLog(@"json dictionary url = %@", url);
-//                    NSLog(@"json dictionary releasedate = %@", releaseDate);
-//                    NSLog(@"json dictionary item = %@", item);
+                    if([item isEqualToString:@"Properties"])   
+                    {
+                        propertiesArray = [jsonDictionary objectForKey:@"Properties"];
+                        
+                        if(propertiesArray.count > 0) // get the sub-dictionary that contains the description
+                        {
+                            NSDictionary *descriptionDictionary = [propertiesArray objectAtIndex:9]; // horrible to hard code it by index!
+                            
+                            // ALERT: !! strange format: keyfield:description; propertyValueField: the text description
+                            if([[descriptionDictionary objectForKey:@"keyField"] isEqualToString:@"description"])
+                            {
+                                description = [descriptionDictionary objectForKey:@"propertyValueField"];
+                            }
+
+                            //NSLog(@"description = %@", description);
+                        }
+                    }
                 }
             }
         } // end for
-    
-       /* TODO: fix this date formatter, returns NIL -  // NSString to NSDate and return back into a string */
-    
-    ////2013-01-23T15:56:53Z
-    
-    NSString *dateString = @"2013-01-23T15:56:53Z";
-    
-    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-    [inputFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-    
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [outputFormatter setTimeStyle:NSDateFormatterNoStyle];
-    
-    NSDate *date = [inputFormatter dateFromString:dateString];
-    
-    //this will set date's time components to 00:00
-    [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
-                                    startDate:&date
-                                     interval:NULL
-                                      forDate:date];
-    
-    NSString *outputDateString = [outputFormatter stringFromDate:date];
-    
-    /* TEST: display variables on UIView */
-    
-    _contentLabel.text = outputDateString;
-    _JSONlabel.text = title;
-    
-    /* format URL for image, could put this in a separate function */
-    NSString *urlPath = @"http://www.ers.usda.gov";
-
-    NSMutableString *fullURL;
-    
-    if (fullURL == nil){
-        fullURL = [[NSMutableString alloc] init];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"error loading objects %@", exception);
+    }
+    @finally {
+        // how to terminate here?
     }
     
-    [ fullURL appendString: urlPath];
-    [ fullURL appendString: url];
+    //////////////////////////////////
+    /* display variables on UIView */
+    /////////////////////////////////
     
-    NSURL *imageURL = [NSURL URLWithString:fullURL];
-    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
-    UIImage * image = [UIImage imageWithData:imageData];
+     _JSONlabel.text = title;
+    _contentLabel.text = [self formatDate:releaseDate]; // get formatted date
+    _contentTextView.text = description;
+   
     
-    _chartImageView.image = image;
+   // _releaseDateLabel.text = description;
+    _chartImageView.image = [self loadImage:url];
    
 
     /* EXAMPLE: return a dictionary element from a dictionary element
@@ -161,6 +152,74 @@
      objectForKey:@"country"],
      outstandingAmount];
      */
+}
+
+#pragma mark - date formatter
+/* incoming date is the one that needs formatting */
+- (NSString*) formatDate:(NSString*)unformattedDateString
+{
+    NSString *outputDateString = nil;
+    
+    if(unformattedDateString !=nil)
+    {
+        NSString *dateString = unformattedDateString;
+        
+        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+        [inputFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+        
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+        [outputFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [outputFormatter setTimeStyle:NSDateFormatterNoStyle];
+        
+        NSDate *date = [inputFormatter dateFromString:dateString];
+        
+        //this will set date's time components to 00:00
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
+                                        startDate:&date
+                                         interval:NULL
+                                          forDate:date];
+        
+        outputDateString = [outputFormatter stringFromDate:date];
+    }
+    else
+    {
+        NSLog(@"incoming date was nil");
+    }
+    return outputDateString;
+}
+
+#pragma mark - retrieve image
+/* TODO: this should be done on a background thread in case the image is slow or bombs */
+- (UIImage*) loadImage:(NSString*)urlForImageString
+{
+    NSData * imageData = nil;
+    UIImage * image = nil;
+    
+    NSString *urlPath = @"http://www.ers.usda.gov";
+        
+    NSMutableString *fullURL;
+    
+    if (fullURL == nil){
+        fullURL = [[NSMutableString alloc] init];
+    }
+    
+    [ fullURL appendString: urlPath];
+    [ fullURL appendString: urlForImageString];
+    
+    NSURL *imageURL = [NSURL URLWithString:fullURL];
+    
+    @try {
+        imageData = [NSData dataWithContentsOfURL:imageURL];
+        image = [UIImage imageWithData:imageData];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"crashed loading the image = %@", exception);
+    }
+    @finally {
+        //<#statements#>
+    }
+    
+    return image;
 }
 
 - (void)viewDidUnload
